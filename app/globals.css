@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Basic prose styling for streamed markdown output */
+.prose-output {
+  @apply text-[15px] leading-relaxed text-foreground;
+}
+.prose-output h1,
+.prose-output h2,
+.prose-output h3 {
+  @apply font-semibold mt-6 mb-2;
+}
+.prose-output h1 { @apply text-2xl; }
+.prose-output h2 { @apply text-xl; }
+.prose-output h3 { @apply text-lg; }
+.prose-output p { @apply my-3; }
+.prose-output ul { @apply list-disc ml-6 my-3; }
+.prose-output ol { @apply list-decimal ml-6 my-3; }
+.prose-output li { @apply my-1; }
+.prose-output strong { @apply font-semibold; }
+.prose-output em { @apply italic; }
+.prose-output code {
+  @apply bg-secondary px-1.5 py-0.5 rounded text-[13px];
+}
+.prose-output pre {
+  @apply bg-secondary p-4 rounded-md my-4 overflow-x-auto text-[13px] leading-normal;
+}
+.prose-output pre code { @apply bg-transparent p-0; }
+.prose-output blockquote {
+  @apply border-l-4 border-border pl-4 italic my-4 text-muted-foreground;
+}
+.prose-output hr { @apply my-6 border-border; }
+.prose-output table {
+  @apply w-full my-4 border-collapse;
+}
+.prose-output th,
+.prose-output td {
+  @apply border border-border px-3 py-2 text-left;
+}
+.prose-output th { @apply bg-secondary font-semibold; }
