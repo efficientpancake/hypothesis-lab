@@ -50,8 +50,15 @@ export function HypothesisChat() {
       });
 
       if (!res.ok || !res.body) {
-        const msg = await res.text().catch(() => "Request failed");
-        throw new Error(msg || `HTTP ${res.status}`);
+        let msg = "Request failed";
+        try {
+          const text = await res.text();
+          const parsed = JSON.parse(text);
+          msg = parsed.error || parsed.errorMessage || msg;
+        } catch {
+          // not JSON — use default
+        }
+        throw new Error(msg);
       }
 
       const reader = res.body.getReader();
