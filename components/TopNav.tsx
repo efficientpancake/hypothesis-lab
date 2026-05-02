@@ -10,6 +10,7 @@ export function TopNav() {
   const tabs = [
     { href: "/hypothesis", label: "🧪 Hypotheses" },
     { href: "/persona", label: "🎭 Persona Interview" },
+    { href: "/learning", label: "📓 Learning Card" },
   ];
 
   return (

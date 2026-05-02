@@ -29,6 +29,13 @@ interface AppState {
   appendChatMessage: (m: ChatMessage) => void;
   appendAssistantChunk: (chunk: string) => void;
   resetChat: () => void;
+
+  learningOutput: string;
+  setLearningOutput: (v: string) => void;
+  appendLearningOutput: (chunk: string) => void;
+
+  learningDone: boolean;
+  setLearningDone: (v: boolean) => void;
 }
 
 export const useStore = create<AppState>((set) => ({
@@ -87,4 +94,12 @@ export const useStore = create<AppState>((set) => ({
       };
     }),
   resetChat: () => set({ chatHistory: [] }),
+
+  learningOutput: "",
+  setLearningOutput: (v) => set({ learningOutput: v }),
+  appendLearningOutput: (chunk) =>
+    set((s) => ({ learningOutput: s.learningOutput + chunk })),
+
+  learningDone: false,
+  setLearningDone: (v) => set({ learningDone: v }),
 }));

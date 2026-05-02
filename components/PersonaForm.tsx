@@ -30,6 +30,7 @@ export function PersonaForm() {
     setFields((f) => ({ ...f, [key]: value }));
   }
 
+  const [copied, setCopied] = useState(false);
   const canStart = fields.name.trim().length > 0 && fields.role.trim().length > 0;
 
   function start() {
@@ -38,14 +39,43 @@ export function PersonaForm() {
     resetChat();
   }
 
+  function copyForm() {
+    const lines: string[] = [];
+    if (fields.name.trim()) lines.push(`Name: ${fields.name.trim()}`);
+    if (fields.role.trim()) lines.push(`Role: ${fields.role.trim()}`);
+    if (fields.ageRange?.trim()) lines.push(`Age range: ${fields.ageRange.trim()}`);
+    if (fields.context?.trim()) lines.push(`Context: ${fields.context.trim()}`);
+    if (fields.goals?.trim()) lines.push(`Goals: ${fields.goals.trim()}`);
+    if (fields.painPoints?.trim()) lines.push(`Pain points: ${fields.painPoints.trim()}`);
+    if (fields.personality?.trim()) lines.push(`Personality: ${fields.personality.trim()}`);
+    if (fields.decisionMaking?.trim()) lines.push(`Decision-making: ${fields.decisionMaking.trim()}`);
+    if (fields.additionalNotes?.trim()) lines.push(`Additional notes: ${fields.additionalNotes.trim()}`);
+    navigator.clipboard.writeText(lines.join("\n")).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }
+
+  const hasContent = fields.name.trim() || fields.role.trim();
+
   return (
     <div className="space-y-6">
-      <div className="space-y-1">
-        <h2 className="text-xl font-semibold">🎭 Define your persona</h2>
-        <p className="text-sm text-muted-foreground">
-          The persona agent only knows what you tell it here. Name and role are
-          required; everything else fills out the character.
-        </p>
+      <div className="flex items-start justify-between">
+        <div className="space-y-1">
+          <h2 className="text-xl font-semibold">🎭 Define your persona</h2>
+          <p className="text-sm text-muted-foreground">
+            The persona agent only knows what you tell it here. Name and role are
+            required; everything else fills out the character.
+          </p>
+        </div>
+        {hasContent && (
+          <button
+            onClick={copyForm}
+            className="shrink-0 ml-3 rounded-md border border-border bg-secondary px-3 py-1.5 text-xs font-semibold text-foreground hover:bg-secondary/70 transition-colors"
+          >
+            {copied ? "Copied!" : "Copy persona"}
+          </button>
+        )}
       </div>
 
       <div className="grid gap-5">

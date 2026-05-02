@@ -17,6 +17,7 @@ export function HypothesisChat() {
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -86,12 +87,30 @@ export function HypothesisChat() {
 
   return (
     <div className="rounded-lg border border-border bg-background shadow-sm">
-      <div className="border-b border-border px-5 py-3">
-        <h3 className="text-sm font-semibold">💬 Tweak with the Hypothesis Engineer</h3>
-        <p className="text-xs text-muted-foreground">
-          Ask follow-ups — "make #2 more specific," "reconsider #4," "rewrite
-          the test card for a lower budget."
-        </p>
+      <div className="flex items-start justify-between border-b border-border px-5 py-3">
+        <div>
+          <h3 className="text-sm font-semibold">💬 Tweak with the Hypothesis Engineer</h3>
+          <p className="text-xs text-muted-foreground">
+            Ask follow-ups — "make #2 more specific," "reconsider #4," "rewrite
+            the test card for a lower budget."
+          </p>
+        </div>
+        {chat.length > 0 && (
+          <button
+            onClick={() => {
+              const transcript = chat
+                .map((m) => `${m.role === "user" ? "You" : "Hypothesis Engineer"}: ${m.content}`)
+                .join("\n\n");
+              navigator.clipboard.writeText(transcript).then(() => {
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+              });
+            }}
+            className="shrink-0 ml-3 rounded-md border border-border bg-secondary px-3 py-1.5 text-xs font-semibold text-foreground hover:bg-secondary/70 transition-colors"
+          >
+            {copied ? "Copied!" : "Copy chat"}
+          </button>
+        )}
       </div>
 
       {chat.length > 0 && (

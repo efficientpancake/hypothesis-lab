@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useStore } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,7 +17,9 @@ export function InterviewChat() {
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
+  const router = useRouter();
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -97,12 +100,38 @@ export function InterviewChat() {
           <div className="text-sm font-semibold">{persona.name}</div>
           <div className="text-xs text-muted-foreground">{persona.role}</div>
         </div>
-        <button
-          onClick={editPersona}
-          className="text-xs font-medium text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
-        >
-          Edit persona
-        </button>
+        <div className="flex items-center gap-3">
+          {chat.length > 0 && (
+            <button
+              onClick={() => {
+                const transcript = chat
+                  .map((m) => `${m.role === "user" ? "You" : persona!.name}: ${m.content}`)
+                  .join("\n\n");
+                navigator.clipboard.writeText(transcript).then(() => {
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                });
+              }}
+              className="rounded-md border border-border bg-secondary px-3 py-1.5 text-xs font-semibold text-foreground hover:bg-secondary/70 transition-colors"
+            >
+              {copied ? "Copied!" : "Copy chat"}
+            </button>
+          )}
+          {chat.length > 0 && (
+            <button
+              onClick={() => router.push("/learning")}
+              className="rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              End interview →
+            </button>
+          )}
+          <button
+            onClick={editPersona}
+            className="text-xs font-medium text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+          >
+            Edit persona
+          </button>
+        </div>
       </div>
 
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-5 py-4">
