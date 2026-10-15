@@ -76,10 +76,10 @@ export default function LearningPage() {
   }
 
   return (
-    <main className="mx-auto max-w-4xl px-6 py-10">
+    <main className="mx-auto max-w-4xl px-6 py-14">
       <div className="mb-8 space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">
-          📓 Synthesize what you learned
+        <h1 className="font-lora text-[32px] font-bold tracking-tight">
+          Synthesize what you learned
         </h1>
         <p className="text-muted-foreground">
           Read your interview transcript against your hypotheses. Get a
@@ -88,7 +88,7 @@ export default function LearningPage() {
       </div>
 
       {!ready ? (
-        <div className="rounded-lg border border-border bg-background p-6 shadow-sm">
+        <div className="rounded-lg border border-border bg-secondary p-6">
           <p className="text-sm text-muted-foreground">
             You need a brief, extracted hypotheses, a defined persona, and at
             least one interview message before you can synthesize.

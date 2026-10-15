@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Pencil } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -94,7 +95,7 @@ export function InterviewChat() {
   }
 
   return (
-    <div className="flex h-[calc(100vh-9rem)] flex-col rounded-lg border border-border bg-background shadow-sm">
+    <div className="flex h-[calc(100vh-9rem)] flex-col rounded-lg border border-border bg-secondary">
       <div className="flex items-center justify-between border-b border-border px-5 py-3">
         <div>
           <div className="text-sm font-semibold">{persona.name}</div>
@@ -127,8 +128,9 @@ export function InterviewChat() {
           )}
           <button
             onClick={editPersona}
-            className="text-xs font-medium text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+            className="flex items-center gap-1 text-xs font-medium text-[#1D9E75] hover:text-[#1D9E75]/80 transition-colors"
           >
+            <Pencil className="h-3 w-3" />
             Edit persona
           </button>
         </div>
@@ -197,10 +199,10 @@ function Bubble({
           {isUser ? "You" : personaName}
         </div>
         <div
-          className={`rounded-lg px-3.5 py-2.5 text-sm whitespace-pre-wrap ${
+          className={`rounded-lg px-3.5 py-2.5 whitespace-pre-wrap ${
             isUser
-              ? "bg-primary text-primary-foreground"
-              : "bg-secondary text-secondary-foreground"
+              ? "bg-primary text-primary-foreground text-sm"
+              : "bg-secondary text-secondary-foreground ai-chat-bubble"
           }`}
         >
           {content}

@@ -33,7 +33,7 @@ export function HypothesisSidePanel({
   }
 
   return (
-    <aside className="w-full rounded-lg border border-border bg-background shadow-sm">
+    <aside className="w-full rounded-lg border border-border bg-secondary">
       <div className="border-b border-border px-4 py-3">
         <div className="flex items-center justify-between gap-2">
           <div>

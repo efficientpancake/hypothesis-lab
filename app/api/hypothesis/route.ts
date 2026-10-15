@@ -1,4 +1,4 @@
-import { client, MODEL } from "@/lib/anthropic";
+import { client, HYPOTHESIS_MODEL } from "@/lib/anthropic";
 import { getHypothesisEngineerPrompt } from "@/lib/hypothesis-prompt";
 
 export const runtime = "nodejs";
@@ -39,8 +39,8 @@ export async function POST(req: Request) {
 
   try {
     const messageStream = client.messages.stream({
-      model: MODEL,
-      max_tokens: 4096,
+      model: HYPOTHESIS_MODEL,
+      max_tokens: 8192,
       system: systemPrompt,
       messages,
     });

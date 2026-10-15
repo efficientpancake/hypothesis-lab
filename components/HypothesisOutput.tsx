@@ -25,7 +25,7 @@ export function HypothesisOutput() {
 
   return (
     <div className="space-y-6">
-      <div className="relative rounded-lg border border-border bg-background p-6 shadow-sm">
+      <div className="relative rounded-lg border border-border bg-secondary p-6">
         <button
           onClick={copyOutput}
           className="absolute top-3 right-3 rounded-md border border-border bg-secondary px-3 py-1.5 text-xs font-semibold text-foreground hover:bg-secondary/70 transition-colors"

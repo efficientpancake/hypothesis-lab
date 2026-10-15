@@ -62,7 +62,7 @@ export function PersonaForm() {
     <div className="space-y-6">
       <div className="flex items-start justify-between">
         <div className="space-y-1">
-          <h2 className="text-xl font-semibold">🎭 Define your persona</h2>
+          <h2 className="font-lora text-xl font-semibold">Define your persona</h2>
           <p className="text-sm text-muted-foreground">
             The persona agent only knows what you tell it here. Name and role are
             required; everything else fills out the character.

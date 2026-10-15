@@ -9,14 +9,35 @@
   }
 }
 
-/* Basic prose styling for streamed markdown output */
+/* Eyebrow labels (teal, uppercase, tight tracking) */
+.eyebrow {
+  color: #1D9E75;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Section labels (muted, small-caps style) */
+.section-label {
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #9db8b0;
+}
+
+/* AI prose output — Lora serif */
 .prose-output {
-  @apply text-[15px] leading-relaxed text-foreground;
+  @apply text-foreground;
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  line-height: 1.7;
 }
 .prose-output h1,
 .prose-output h2,
 .prose-output h3 {
   @apply font-semibold mt-6 mb-2;
+  font-family: 'Lora', serif;
 }
 .prose-output h1 { @apply text-2xl; }
 .prose-output h2 { @apply text-xl; }
@@ -29,9 +50,11 @@
 .prose-output em { @apply italic; }
 .prose-output code {
   @apply bg-secondary px-1.5 py-0.5 rounded text-[13px];
+  font-family: ui-monospace, monospace;
 }
 .prose-output pre {
   @apply bg-secondary p-4 rounded-md my-4 overflow-x-auto text-[13px] leading-normal;
+  font-family: ui-monospace, monospace;
 }
 .prose-output pre code { @apply bg-transparent p-0; }
 .prose-output blockquote {
@@ -46,3 +69,10 @@
   @apply border border-border px-3 py-2 text-left;
 }
 .prose-output th { @apply bg-secondary font-semibold; }
+
+/* AI persona chat bubble */
+.ai-chat-bubble {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  line-height: 1.7;
+}

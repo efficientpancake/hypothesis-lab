@@ -8,31 +8,38 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        border: "hsl(220 13% 91%)",
-        input: "hsl(220 13% 91%)",
-        ring: "hsl(222 84% 55%)",
-        background: "hsl(0 0% 100%)",
-        foreground: "hsl(222 47% 11%)",
+        border: "rgba(255, 255, 255, 0.08)",
+        input: "rgba(255, 255, 255, 0.10)",
+        ring: "#1D9E75",
+        background: "#12121a",
+        foreground: "#f0f0ec",
+        teal: {
+          DEFAULT: "#1D9E75",
+          foreground: "#ffffff",
+        },
         primary: {
-          DEFAULT: "hsl(222 47% 11%)",
-          foreground: "hsl(0 0% 100%)",
+          DEFAULT: "#1D9E75",
+          foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "hsl(220 14% 96%)",
-          foreground: "hsl(222 47% 11%)",
+          DEFAULT: "#1a1a26",
+          foreground: "#f0f0ec",
         },
         muted: {
-          DEFAULT: "hsl(220 14% 96%)",
-          foreground: "hsl(220 9% 46%)",
+          DEFAULT: "#1a1a26",
+          foreground: "#9db8b0",
         },
         accent: {
-          DEFAULT: "hsl(220 14% 96%)",
-          foreground: "hsl(222 47% 11%)",
+          DEFAULT: "#1a1a26",
+          foreground: "#f0f0ec",
         },
         destructive: {
           DEFAULT: "hsl(0 72% 51%)",
           foreground: "hsl(0 0% 100%)",
         },
+      },
+      fontFamily: {
+        lora: ["'Lora'", "serif"],
       },
       borderRadius: {
         lg: "0.5rem",

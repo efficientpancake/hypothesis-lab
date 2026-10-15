@@ -9,3 +9,7 @@ tsconfig.tsbuildinfo
 
 # Local Netlify folder
 .netlify
+
+# Deno (this is a Node project)
+deno.lock
+deno.json

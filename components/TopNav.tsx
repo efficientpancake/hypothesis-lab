@@ -17,9 +17,11 @@ export function TopNav() {
     <header className="border-b border-border bg-background">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
         <div className="flex items-center gap-3">
-          <div className="h-7 w-7 rounded bg-primary" />
+          <div className="flex h-7 w-7 items-center justify-center rounded bg-primary text-white text-base font-bold leading-none">
+            Δ
+          </div>
           <span className="text-sm font-semibold tracking-tight">
-            Hypothesis Lab
+            Apodex Labs
           </span>
         </div>
         <nav className="flex gap-1">
@@ -30,7 +32,7 @@ export function TopNav() {
               className={cn(
                 "rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
                 pathname.startsWith(t.href)
-                  ? "bg-secondary text-foreground"
+                  ? "bg-teal/10 text-teal"
                   : "text-muted-foreground hover:text-foreground"
               )}
             >

@@ -1,4 +1,4 @@
-import { client, MODEL } from "@/lib/anthropic";
+import { client, PERSONA_MODEL } from "@/lib/anthropic";
 import { buildPersonaPrompt, type PersonaFields } from "@/lib/prompts";
 
 export const runtime = "edge";
@@ -28,8 +28,8 @@ export async function POST(req: Request) {
 
   try {
     const messageStream = client.messages.stream({
-      model: MODEL,
-      max_tokens: 1024,
+      model: PERSONA_MODEL,
+      max_tokens: 8192,
       system: systemPrompt,
       messages: messages.map((m) => ({ role: m.role, content: m.content })),
     });

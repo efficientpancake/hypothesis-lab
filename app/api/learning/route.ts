@@ -1,4 +1,4 @@
-import { client, MODEL } from "@/lib/anthropic";
+import { client, LEARNING_MODEL } from "@/lib/anthropic";
 import { getLearningCardPrompt } from "@/lib/learning-prompt";
 import type { PersonaFields } from "@/lib/prompts";
 
@@ -70,8 +70,8 @@ Now produce the Learning Card following the format in your system prompt. Quote 
 
   try {
     const messageStream = client.messages.stream({
-      model: MODEL,
-      max_tokens: 4096,
+      model: LEARNING_MODEL,
+      max_tokens: 8192,
       system: systemPrompt,
       messages: [{ role: "user", content: userMessage }],
     });
